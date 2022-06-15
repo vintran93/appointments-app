@@ -34,11 +34,12 @@ const NewAppointment = ({ location }) => {
   const { doctors } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const alert = useAlert();
+  
   useEffect(() => {
     if (location.doctorId) {
       setDoctorId(location.doctorId);
     } else {
-      setDoctorId(1);
+      setDoctorId(1)
     }
     if (doctors.length === 0 && currentUser) {
       setLoadingDoctors(true);
@@ -94,7 +95,7 @@ const NewAppointment = ({ location }) => {
       key={doctor.id}
       value={doctor.id}
     >
-      {doctor.name}
+      {doctor.name} - {doctor.specialty}
     </option>
   ));
 
@@ -125,11 +126,11 @@ const NewAppointment = ({ location }) => {
               <div className="form-group">
                 <label htmlFor="doctorId">Select list:</label>
                 <select className="form-control" id="doctorId" onChange={onChangeDoctorId} value={doctorId}>
-                  {loadingDoctors ? <option>Loading..</option> : options }
+                  {loadingDoctors ? <option>Loading</option> : options }
                 </select>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block" disabled={loading || loadingDoctors} type="submit">
+                <button className="btn btn-primary btn-block" type="submit">
                   {loading && (
                   <span className="spinner-border spinner-border-sm" />
                   )}
@@ -158,4 +159,5 @@ NewAppointment.propTypes = {
     doctorId: PropTypes.number,
   }).isRequired,
 };
+
 export default NewAppointment;

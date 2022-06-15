@@ -45,19 +45,23 @@ const Doctor = () => {
             {content.name}
           </h2>
           <p className={`${classes.badge} ${classes.badgeSecondary}`}>
-            Appointment Fee &nbsp; $ 50.00
+            Appointment Fee: &nbsp; $ 50.00
           </p>
           <p className={classes.badge}>
-            Qualification: &nbsp;&nbsp;
-            {content.qualification}
+            Education: &nbsp;&nbsp;
+            {content.education}
           </p>
           <p className={`${classes.badge} ${classes.badgeSecondary}`}>
             Specialty: &nbsp;&nbsp;
             {content.specialty}
           </p>
           <p className={classes.badge}>
-            Experience: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Experience: &nbsp;
             {content.experience}
+          </p>
+          <p className={`${classes.badge} ${classes.badgeSecondary}`}>
+            Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {content.address}
           </p>
           <li>
             <Link
@@ -67,7 +71,7 @@ const Doctor = () => {
               }}
               className={classes.btn}
             >
-              Add Appointment
+              Book An Appointment
             </Link>
           </li>
         </div>

@@ -1,6 +1,8 @@
 .Doctor {
   display: flex;
   justify-content: space-around;
+  background-color:rgb(43, 115, 223);
+  color: white;
 }
 
 .doctorImg {
@@ -13,7 +15,7 @@
 }
 
 .badgeSecondary {
-  background-color: lightgray;
+  background-color: grey;
 }
 
 .btn {
@@ -22,12 +24,12 @@
   padding: 10px;
   margin: 50px;
   border-radius: 20px;
-  background-color: rgba(150, 191, 1);
+  background-color: rgb(43, 115, 223);
 }
 
 .btn:hover {
   text-decoration: none;
-  background-color: rgba(150, 191, 1, 0.7);
+  background-color: rgb(223, 151, 43);
   color: black;
 }
 

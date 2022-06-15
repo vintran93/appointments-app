@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-multi-carousel';
-import SocialIcons from './UI/SocialIcons';
+// import SocialIcons from './UI/SocialIcons';
 import 'react-multi-carousel/lib/styles.css';
 import classes from '../styles/Doctors.module.css';
 import getDoctors from '../actions/user';
@@ -40,23 +40,23 @@ const Doctors = () => {
           <img src={doctor.image} alt={doctor.name} className={`rounded-circle ${classes.img}`} />
           <h5 className={`text-dark p-4 ${classes.border}`}>{doctor.name}</h5>
           <p className="text-secondary mt-3">
-            <strong>Qualification:&nbsp;</strong>
-            {doctor.qualification}
-          </p>
-          <p className="text-secondary mt-3">
             <strong>Specialty:&nbsp;</strong>
             {doctor.specialty}
           </p>
+          <p className="text-secondary mt-3">
+            <strong>Education:&nbsp;</strong>
+            {doctor.education}
+          </p>
         </div>
       </Link>
-      <SocialIcons />
+      {/* <SocialIcons /> */}
     </div>
   ));
   return (
     <div className="container text-center">
       <div>
         <h3>LIST OF DOCTORS</h3>
-        <p className="text-secondary">Please select a doctor to view details</p>
+        <p className="text-secondary">Please select a doctor to view details.</p>
       </div>
       {loading && <span className="spinner-border spinner-border-lg" />}
       <Carousel

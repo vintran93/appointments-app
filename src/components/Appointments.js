@@ -36,9 +36,9 @@ const Appointments = () => {
   if (!loading && content.length === 0) {
     appointments = (
       <h4>
-        You do not have any appointment. Make one
+        You do not have any appointments yet. Make one
         <Link to="/appointments/new">
-           here
+        &nbsp; here
         </Link>
       </h4>
     );

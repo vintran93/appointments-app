@@ -3,6 +3,8 @@ import { Redirect, useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import UserService from '../services/user.service';
+import moment from 'moment';
+import classes from '../styles/Doctors.module.css';
 
 const Appointment = () => {
   const [content, setContent] = useState('');
@@ -41,10 +43,7 @@ const Appointment = () => {
   if (!currentUser) {
     return <Redirect to="/login" />;
   }
-
   
-  
-
   const handleClick = () => {
     setLoading(true);
     UserService.deleteAppointment(currentUser.user.id, id).then(() => {
@@ -68,22 +67,32 @@ const Appointment = () => {
         {
           doctor && (
           <div>
+            <img src={doctor.image} alt={doctor.name} className={`rounded-circle ${classes.img}`} />
+            <br></br><br></br>
             <p>
               Appointment Id: &nbsp;
               {content.id}
             </p>
             <p>
-              With &nbsp;
+              Provider: &nbsp;
               <Link to={`/doctors/${doctor.id}`}>
-                {doctor.name}
+                {doctor.name} - {doctor.specialty} 
               </Link>
             </p>
             <p>
-              On &nbsp;
-              {new Date(content.appointment_date).toUTCString()}
+              Address: {doctor.address}
             </p>
+            <p>
+             When: &nbsp; 
+              {moment(content.appointment_date).add(5, 'hours').format('LLL')} 
+            </p>
+            <p> What to bring: </p>
+            <p>  1. Photo ID </p>
+            <p>  2. Insurance Card </p>
+            <p>  3. Arrive 10 minutes early to complete paperwork. </p>
+            <p> * Any cancellations must be at least 24 hours in advance to avoid cancellation fees. </p>
             <button className="btn btn-primary btn-block" type="button" onClick={handleClick} disabled={loading}>
-              Delete
+              Cancel
             </button>
           </div>
           )

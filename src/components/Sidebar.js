@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import SocialIcons from './UI/SocialIcons';
+// import SocialIcons from './UI/SocialIcons';
 import { logout } from '../actions/auth';
 import logo from '../assets/images/logo.png';
 import classes from '../styles/Sidebar.module.css';
@@ -50,7 +50,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink to="/appointments/new" className={classes.navlink} activeClassName={classes.active}>
-                Add Appointment
+                Book Appointment
               </NavLink>
             </li>
             <li>

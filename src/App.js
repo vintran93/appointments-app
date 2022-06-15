@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  Switch, Route, useLocation,
-} from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

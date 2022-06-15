@@ -14,8 +14,7 @@ const register = (name, email, password) => axios.post(`${API_URL}api/v1/users`,
     return response;
   });
 
-const login = (email, password) => axios
-  .post(`${API_URL}login`, {
+const login = (email, password) => axios.post(`${API_URL}login`, {
     email,
     password,
   })
@@ -23,7 +22,6 @@ const login = (email, password) => axios
     if (response.data.jwt) {
       localStorage.setItem('user', JSON.stringify(response.data));
     }
-
     return response.data;
   });
 

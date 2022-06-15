@@ -12,27 +12,27 @@ const Profile = () => {
   return (
     <div className="container">
       <h3>
-        Welcome to your profile <strong>{currentUser.user.name}!</strong>
+        Welcome to your profile, <strong>{currentUser.user.name}!</strong>
       </h3>
       <br></br>
       <p>
         <strong>Name:</strong>
-        {currentUser.user.name}
-      </p>
-      <br></br>
-      <p>
-        <strong>Token:</strong>
-        {currentUser.jwt}
+        &nbsp; {currentUser.user.name}
       </p>
       <br></br>
       <p>
         <strong>Email:</strong>
-        {currentUser.user.email}
+        &nbsp; {currentUser.user.email}
+      </p>
+      <br></br>
+      <p>
+        <strong>Token:</strong>
+        &nbsp; {currentUser.jwt}
       </p>
       <br></br>
       <p>
         <strong>User Id:</strong>
-        {currentUser.user.id}
+        &nbsp; {currentUser.user.id}
       </p>
     </div>
   );
