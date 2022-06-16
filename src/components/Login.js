@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
@@ -68,7 +69,7 @@ const Login = () => {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/doctors" />;
+    return <Navigate to="/doctors" />;
   }
 
   return (

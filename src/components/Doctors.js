@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+// import { Redirect, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-multi-carousel';
 // import SocialIcons from './UI/SocialIcons';
@@ -27,10 +28,10 @@ const Doctors = () => {
           setLoading(false);
         });
     }
-  }, [doctors, dispatch]);
+  }, [currentUser, doctors, dispatch]);
 
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
 
   const doctorsList = doctors.map(doctor => (

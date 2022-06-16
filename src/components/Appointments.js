@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+// import { Redirect, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserService from '../services/user.service';
 
@@ -27,10 +28,10 @@ const Appointments = () => {
         },
       );
     }
-  }, []);
+  }, [currentUser]);
 
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
 
   if (!loading && content.length === 0) {

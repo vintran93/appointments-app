@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Link, useParams } from 'react-router-dom';
+// import { Redirect, Link, useParams } from 'react-router-dom';
+import { Navigate, Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserService from '../services/user.service';
 import classes from '../styles/Doctor.module.css';
@@ -27,10 +28,11 @@ const Doctor = () => {
         setContent(message);
       },
     );
-  }, []);
+  
+  }, [id]);
 
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
 
   return (
@@ -39,7 +41,7 @@ const Doctor = () => {
         {loading && <span className="spinner-border spinner-border-lg" />}
       </div>
       <div className={classes.Doctor}>
-        <img src={content.image} className={classes.doctorImg} />
+        <img src={content.image} className={classes.doctorImg} alt=''/>
         <div>
           <h2>
             {content.name}

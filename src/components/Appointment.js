@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, useParams, Link } from 'react-router-dom';
+// import { Redirect, useParams, Link } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import UserService from '../services/user.service';
@@ -16,6 +17,7 @@ const Appointment = () => {
   const alert = useAlert();
   const { id } = useParams();
 
+  
   useEffect(() => {
     UserService.getAppointment(currentUser.user.id, id).then(
       response => {
@@ -38,10 +40,11 @@ const Appointment = () => {
         setLoading(false);
         setDoctor(response.data);
       });
-  }, []);
+  }, [currentUser.user.id, id]);
+  
   
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
   
   const handleClick = () => {
@@ -57,7 +60,7 @@ const Appointment = () => {
   };
 
   if (successful) {
-    return <Redirect to="/appointments" />;
+    return <Navigate to="/appointments" />;
   }
 
   return (

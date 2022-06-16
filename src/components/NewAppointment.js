@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
@@ -21,7 +22,7 @@ const required = value => {
   return null;
 };
 
-const NewAppointment = ({ location }) => {
+const NewAppointment = () => {
   const form = useRef();
   const checkBtn = useRef();
   const { user: currentUser } = useSelector(state => state.auth);
@@ -36,8 +37,8 @@ const NewAppointment = ({ location }) => {
   const alert = useAlert();
   
   useEffect(() => {
-    if (location.doctorId) {
-      setDoctorId(location.doctorId);
+    if (doctorId) {
+      setDoctorId(doctorId);
     } else {
       setDoctorId(1)
     }
@@ -51,7 +52,7 @@ const NewAppointment = ({ location }) => {
           dispatch(setMessage('Unable to get doctors list'));
         });
     }
-  }, [doctors, dispatch]);
+  }, [currentUser, doctorId, doctors, dispatch]);
 
   const onChangeDoctorId = e => {
     const doctorId = e.target.value;
@@ -100,10 +101,10 @@ const NewAppointment = ({ location }) => {
   ));
 
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
   if (successful) {
-    return <Redirect to="/appointments" />;
+    return <Navigate to="/appointments" />;
   }
 
   return (
@@ -154,10 +155,10 @@ const NewAppointment = ({ location }) => {
   );
 };
 
-NewAppointment.propTypes = {
-  location: PropTypes.shape({
-    doctorId: PropTypes.number,
-  }).isRequired,
-};
+// NewAppointment.propTypes = {
+//   location: PropTypes.shape({
+//     doctorId: PropTypes.number,
+//   }).isRequired,
+// };
 
 export default NewAppointment;
