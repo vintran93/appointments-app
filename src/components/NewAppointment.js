@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
@@ -35,12 +33,12 @@ const NewAppointment = () => {
   const { doctors } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const alert = useAlert();
-  
+
   useEffect(() => {
     if (doctorId) {
       setDoctorId(doctorId);
     } else {
-      setDoctorId(1)
+      setDoctorId(1);
     }
     if (doctors.length === 0 && currentUser) {
       setLoadingDoctors(true);
@@ -52,14 +50,14 @@ const NewAppointment = () => {
           dispatch(setMessage('Unable to get doctors list'));
         });
     }
-  }, [currentUser, doctorId, doctors, dispatch]);
+  }, [doctors, dispatch, currentUser, doctorId]);
 
-  const onChangeDoctorId = e => {
+  const onChangDoctorId = e => {
     const doctorId = e.target.value;
     setDoctorId(doctorId);
   };
 
-  const onChangeAppointmentDate = e => {
+  const onChangAppointmentDate = e => {
     const appointmentDate = e.target.value;
     setAppointmentDate(appointmentDate);
   };
@@ -106,7 +104,6 @@ const NewAppointment = () => {
   if (successful) {
     return <Navigate to="/appointments" />;
   }
-
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -120,18 +117,18 @@ const NewAppointment = () => {
                   className="form-control"
                   name="appointmentDate"
                   value={appointmentDate}
-                  onChange={onChangeAppointmentDate}
+                  onChange={onChangAppointmentDate}
                   validations={[required]}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="doctorId">Select list:</label>
-                <select className="form-control" id="doctorId" onChange={onChangeDoctorId} value={doctorId}>
-                  {loadingDoctors ? <option>Loading</option> : options }
+                <select className="form-control" id="doctorId" onChange={onChangDoctorId} value={doctorId}>
+                  {loadingDoctors ? <option>Loading..</option> : options }
                 </select>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block" type="submit">
+                <button className="btn btn-primary btn-block" disabled={loading || loadingDoctors} type="submit">
                   {loading && (
                   <span className="spinner-border spinner-border-sm" />
                   )}
@@ -155,10 +152,5 @@ const NewAppointment = () => {
   );
 };
 
-// NewAppointment.propTypes = {
-//   location: PropTypes.shape({
-//     doctorId: PropTypes.number,
-//   }).isRequired,
-// };
 
 export default NewAppointment;
